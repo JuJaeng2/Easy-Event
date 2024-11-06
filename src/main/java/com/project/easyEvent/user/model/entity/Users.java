@@ -2,6 +2,7 @@ package com.project.easyEvent.user.model.entity;
 
 import com.project.easyEvent.common.entity.BaseEntity;
 
+import com.project.easyEvent.user.model.dto.SignUpForm;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -27,4 +28,13 @@ public class Users extends BaseEntity {
     private String password;
     private String phone;
     private Boolean isDeleted;
+
+    static public Users make(SignUpForm form){
+        return Users.builder()
+                .name(form.getName())
+                .email(form.getEmail())
+//                .password()
+                .build();
+    }
+
 }
