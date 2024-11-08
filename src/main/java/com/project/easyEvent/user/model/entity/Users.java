@@ -12,6 +12,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Entity
 @AllArgsConstructor
@@ -29,11 +30,11 @@ public class Users extends BaseEntity {
     private String phone;
     private Boolean isDeleted;
 
-    static public Users make(SignUpForm form){
+    static public Users makeNewUser(SignUpForm form) {
         return Users.builder()
                 .name(form.getName())
                 .email(form.getEmail())
-//                .password()
+                .password(form.getPassword())
                 .build();
     }
 
